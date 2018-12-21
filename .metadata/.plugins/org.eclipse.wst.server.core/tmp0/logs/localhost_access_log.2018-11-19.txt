@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /main.do HTTP/1.1" 200 15733
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /assets/css/calStyle.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /assets/js/calendar.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /assets/images/locMap.gif HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /assets/css/images/overlay.png HTTP/1.1" 200 55264
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:07 +0900] "GET /images/banner.jpg HTTP/1.1" 404 -
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:33 +0900] "GET /local/localSelect.do?sidoCode=11 HTTP/1.1" 200 58019
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:36 +0900] "GET /local/localDetail.do?id=PF145310 HTTP/1.1" 200 1473
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:52 +0900] "GET /local/localSelect.do?sidoCode=42 HTTP/1.1" 200 368
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:56 +0900] "GET /local/localSelect.do?sidoCode=11 HTTP/1.1" 200 58019
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:42:59 +0900] "GET /local/localDetail.do?id=PF145310 HTTP/1.1" 200 1473
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:44:47 +0900] "GET /main.do HTTP/1.1" 200 15680
+0:0:0:0:0:0:0:1 - - [19/Nov/2018:15:44:47 +0900] "GET /images/banner.jpg HTTP/1.1" 404 -

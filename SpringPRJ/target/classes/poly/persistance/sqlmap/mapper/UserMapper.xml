@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.UserMapper">
+
+	<!-- 회원정보 insert -->
+	<insert id="insertUserInfo" parameterType="UserDTO">
+		INSERT INTO USER_INFO(
+			USER_SEQ,
+			USER_EMAIL,
+			USER_PASSWORD,
+			USER_NAME,
+			USER_HP,
+			USER_BIRTH,
+			USER_GENDER,
+			REGDATE,
+			REGNO,
+			UPDDATE,
+			UPDNO
+		) VALUES(
+			USER_SEQ.NEXTVAL,
+			#{email},
+			#{password},
+			#{name},
+			#{hp},
+			#{birth},
+			#{birthSec},
+			SYSDATE,
+			USER_SEQ.CURRVAL,
+			SYSDATE,
+			USER_SEQ.CURRVAL
+		)
+	</insert>
+	
+	<!-- 회원정보 select -->
+	<select id="getUserList"  resultType="UserDTO">
+		SELECT 
+			USER_SEQ AS userSeq,
+			USER_EMAIL AS email,
+			USER_NAME AS name,
+			USER_HP AS hp,
+			USER_GENDER AS birthSec,
+			USER_BIRTH AS birth,
+			REGDATE AS regDate
+		FROM
+			USER_INFO
+	</select>
+	
+	<!-- 회원정보 Detail -->
+	<select id="getUserDetail" resultType="UserDTO" parameterType="UserDTO" >
+		SELECT 
+			USER_SEQ AS userSeq,
+			USER_EMAIL AS email,
+			USER_PASSWORD AS password,
+			USER_NAME AS name,
+			USER_HP AS hp,
+			USER_GENDER AS birthSec,
+			USER_BIRTH AS birth,
+			REGDATE AS regDate
+		FROM
+			USER_INFO
+		WHERE
+			USER_SEQ = #{userSeq}
+	</select>
+	
+	<!-- 회원정보 update -->
+	<update id="updateUserInfo" parameterType="UserDTO">
+		UPDATE
+			USER_INFO
+		SET
+			USER_PASSWORD = #{password},
+			USER_HP = #{hp},
+			USER_GENDER = #{birthSec},
+			USER_BIRTH = #{birth}
+		WHERE
+			USER_SEQ = #{userSeq}
+	</update>
+	
+	<!-- 회원탈퇴 delete -->
+	<delete id="deleteUserInfo" parameterType="UserDTO">
+		DELETE FROM USER_INFO
+		WHERE USER_SEQ = #{userSeq}
+	</delete>
+	
+	<!-- 로그인 -->
+	<select id="getLogin" parameterType="UserDTO" resultType="UserDTO">
+		SELECT
+			USER_SEQ as userSeq,
+			USER_EMAIL as email,
+			USER_NAME as name,
+			USER_HP as hp,
+			USER_BIRTH as birth,
+			USER_GENDER as birthSec
+		FROM 
+			USER_INFO
+		WHERE
+			USER_EMAIL = #{email} and USER_PASSWORD = #{password}
+	</select>
+	
+	<!-- 이메일 중복 확인  -->
+	<select id="getEmailCh" parameterType="UserDTO" resultType="int">
+		SELECT COUNT(*)
+		FROM	USER_INFO
+		WHERE USER_EMAIL =#{email}
+	</select>
+	<!-- 이메일 찾기 -->
+	<select id="getFindEmail" parameterType="UserDTO" resultType="UserDTO">
+		SELECT
+			USER_SEQ as userSeq,
+			USER_EMAIL as email,
+			USER_NAME as name,
+			USER_HP as hp,
+			USER_BIRTH as birth,
+			USER_GENDER as birthSec
+		FROM 
+			USER_INFO
+		WHERE
+			USER_NAME = #{name} and USER_HP = #{hp}
+	</select>
+	<!-- 비밀번호 수정 -->
+	<select id="getFindPwd" parameterType="UserDTO" resultType="UserDTO">
+	SELECT
+			USER_SEQ as userSeq,
+			USER_EMAIL as email,
+			USER_NAME as name,
+			USER_HP as hp,
+			USER_BIRTH as birth,
+			USER_GENDER as birthSec
+		FROM 
+			USER_INFO
+		WHERE
+			USER_NAME = #{name} and USER_HP = #{hp} and USER_EMAIL = #{email}
+	</select>
+	<!-- 비밀번호 변경 -->
+	 <update id="UpdatePwd" parameterType="UserDTO">
+		UPDATE
+			USER_INFO
+		SET USER_SEQ = #{userSeq}
+		WHERE USER_SEQ = #{userSeq}
+	</update>
+	<!-- <update id="UpdatePwd" parameterType="UserDTO">
+		UPDATE USER_INFO
+		SET USER_PASSWORD = #{password}
+		WHERE USER_SEQ = #{userSeq}
+	</update> -->
+	
+	
+</mapper>

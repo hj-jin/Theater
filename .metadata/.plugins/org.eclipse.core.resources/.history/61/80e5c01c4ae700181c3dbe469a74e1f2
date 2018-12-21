@@ -1,0 +1,32 @@
+package poly.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import poly.util.CmmUtil;
+
+@Controller
+public class LocalController {
+
+	private Logger log = Logger.getLogger(this.getClass());
+	
+	/*@Resource(name=)
+	private IService Service;*/
+	
+	@RequestMapping(value="local/localSelect")
+	public String localSelect(HttpServletRequest request)throws Exception{
+		log.info(this.getClass() + ".localSelect start ");
+		String sidoCode = CmmUtil.nvl(request.getParameter("sidoCode"));
+		log.info("sidoCode : " + sidoCode);
+		
+		String url = "http://www.kopis.or.kr/openApi/restful/pblprfr?service=b0c72a78fe0b42c2a4ed40f73a1ae3ac&stdate=20181101&eddate=20201231&cpage=1&rows=5&prfstate=02&signgucode=11&signgucode=11"
+		
+		
+		log.info(this.getClass() + ".localSelect end ");
+		return null;
+	}
+}

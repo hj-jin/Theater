@@ -1,0 +1,13 @@
+127.0.0.1 - - [24/Nov/2018:22:03:11 +0900] "GET / HTTP/1.1" 200 16400
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:21 +0900] "GET /main.do HTTP/1.1" 200 16522
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:21 +0900] "GET /assets/css/calStyle.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:21 +0900] "GET /assets/js/calendar.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:21 +0900] "GET /assets/images/locMap.gif HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:21 +0900] "GET /images/banner.jpg HTTP/1.1" 404 -
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:05:28 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 342
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:06:43 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 342
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:07:39 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 342
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:09:58 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 342
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:10:22 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 342
+0:0:0:0:0:0:0:1 - - [24/Nov/2018:22:11:00 +0900] "GET /speech/speechGetText.do HTTP/1.1" 200 372
+127.0.0.1 - - [24/Nov/2018:22:12:39 +0900] "GET / HTTP/1.1" 200 16400

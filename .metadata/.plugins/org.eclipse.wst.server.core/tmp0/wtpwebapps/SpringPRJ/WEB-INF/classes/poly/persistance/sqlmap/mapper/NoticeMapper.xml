@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.NoticeMapper">
+
+	<!-- 공지사항 insert -->
+	<insert id="insertNotice" parameterType="NoticeDTO">
+		INSERT INTO NOTICE
+		(
+			NOTICE_SEQ,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			NOTICE_CNT,
+			REGDATE,
+			REGNO,
+			UPDDATE,
+			UPDNO
+		)
+		VALUES
+		(
+			NOTICE_SEQ.NEXTVAL,
+			#{title},
+			#{content},
+			'0',
+			SYSDATE,
+			#{userSeq},
+			SYSDATE,
+			#{userSeq}
+		)
+	
+	</insert>
+	
+	<!-- 공시자항 리스트 select -->
+	<select id="getnoticeList" resultType="NoticeDTO">
+		SELECT 
+			NOTICE_SEQ as noticeSeq,
+			NOTICE_TITLE as title,
+			NOTICE_CONTENT as content,
+			NOTICE_CNT as cnt,
+			UPDDATE as updDate,
+			UPDNO as updNo
+		FROM NOTICE
+	</select>
+	
+	<!-- 공지사항 상세 select -->
+	<select id="getNoticeDetail" resultType="NoticeDTO" parameterType="NoticeDTO">
+		SELECT 
+			NOTICE_SEQ as noticeSeq,
+			NOTICE_TITLE as title,
+			NOTICE_CONTENT as content,
+			NOTICE_CNT as cnt,
+			UPDDATE as updDate,
+			UPDNO as updNo
+		FROM NOTICE
+		WHERE NOTICE_SEQ = #{noticeSeq}
+	</select>
+	
+	<!--공지사항 update  -->
+	<update id="updateNotice" parameterType="NoticeDTO">
+		UPDATE NOTICE
+		SET
+			NOTICE_TITLE = #{title},
+			NOTICE_CONTENT = #{content},
+			UPDDATE = SYSDATE,
+			UPDNO = #{userSeq}
+		
+		WHERE NOTICE_SEQ = #{noticeSeq}
+			
+	
+	</update>
+	<!-- 공지사항 삭제 delete -->
+	<delete id="deleteNotice" parameterType="NoticeDTO">
+		DELETE FROM NOTICE
+		WHERE NOTICE_SEQ = #{noticeSeq}
+	</delete>
+	
+	<!-- 공지사항 댓글 insert-->
+	<insert id="insertReNotice" parameterType="NoticeDTO">
+	INSERT INTO RENOTICE
+		(
+			RENOTICE_SEQ,
+			NOTICE_SEQ,
+			RENOTICE_CONTENT,
+			REGDATE,
+			REGNO,
+			UPDDATE,
+			UPDNO
+		)
+		VALUES
+		(
+			RENOTICE_SEQ.NEXTVAL,
+			#{noticeSeq},
+			#{reNotice},
+			SYSDATE,
+			#{userSeq},
+			SYSDATE,
+			#{userSeq}
+		)
+	
+	</insert>
+	
+	<!-- 공지사항 댓글 select -->
+	<select id="getReList" parameterType="NoticeDTO" resultType="NoticeDTO">
+	SELECT
+		RENOTICE_SEQ as reNoticeSeq,
+		NOTICE_SEQ as noticeSeq,
+		RENOTICE_CONTENT as reNotice,
+		UPDDATE as updDate,
+		UPDNO as updNo
+	FROM RENOTICE
+	WHERE NOTICE_SEQ = #{noticeSeq}
+	</select>
+	<!-- 리뷰 업데이트 뷰 -->
+	<select id="getUpReple" parameterType="NoticeDTO" resultType="NoticeDTO">
+		SELECT
+			RENOTICE_SEQ as reNoticeSeq,
+			NOTICE_SEQ as noticeSeq,
+			RENOTICE_CONTENT as reNotice,
+			UPDDATE as updDate,
+			UPDNO as updNo
+		FROM RENOTICE
+		WHERE RENOTICE_SEQ = #{reNoticeSeq}
+	
+	</select>
+	
+	
+</mapper>

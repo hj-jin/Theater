@@ -1,0 +1,45 @@
+package poly.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.RequestScope;
+
+import poly.util.ApiGoogle;
+
+@Controller
+
+public class SpeechController {
+	private Logger log = Logger.getLogger(this.getClass());
+	
+	@RequestMapping(value="speech/speechGetText")
+	public String speechGetText(Model model) throws Exception{
+		log.info(this.getClass() + ".speechGetText start ~~!!");
+		
+		
+
+		log.info(this.getClass() + ".speechGetText end ~~!!");
+		return "/speech/speechView";
+	}
+	@RequestMapping(value="speech/testAudio")
+	public @ResponseBody String testAudio () throws Exception{
+		log.info(this.getClass() + " testAudio start ");
+		String testAudio = ApiGoogle.speechGetText("c:\\audio.raw");
+		//String testAudio = ApiGoogle.speechGetText("c:\\commercial_stereo.raw");
+		
+		
+		
+		System.out.println(testAudio);
+		
+		
+		log.info(this.getClass() + " testAudio end ");
+		return testAudio;
+	}
+	
+	@RequestMapping(value="speech/annyang")
+	public Stirng annyang() throws Exception{
+		return null;
+	}
+}
