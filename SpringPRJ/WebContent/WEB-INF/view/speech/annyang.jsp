@@ -5,13 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script
-	src='http://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js'></script>
+<script src='/assets/js/annyang.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
 <script>
+
+
 	annyang.start({
-		autoRestart : false,
+		autoRestart : true,
 		continuous : true
 	})
+	
+	// Tell KITT to use annyang
+  SpeechKITT.annyang();
+
+  // Define a stylesheet for KITT to use
+  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
+
+  // Render KITT's interface
+  SpeechKITT.vroom();
+	
 	var recognition = annyang.getSpeechRecognizer();
 	var final_transcript = '';
 	recognition.interimResults = true;
@@ -28,10 +40,8 @@
 				console.log("interim_transcript=" + interim_transcript);
 			}
 		}
-		document.getElementById('result').innerHTML = '중간값:='
-				+ interim_transcript + '<br/>결과값=' + final_transcript;
-		console.log('interim=' + interim_transcript + '|final='
-				+ final_transcript);
+		document.getElementById('result').innerHTML = '중간값:='+ interim_transcript + '<br/>결과값=' + final_transcript;
+		console.log('interim=' + interim_transcript + '|final='+ final_transcript);
 	};
 </script>
 </head>

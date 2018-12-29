@@ -44,7 +44,7 @@
 							&nbsp;
 							</div>
 							<!-- 자막제공 클릭  -->
-							<div style="width:100%; cursor:pointer; border:1px solid #cccccc; background-color:rgba(255,255,255,0); position:absolute; height:50px; bottom:150px;" onclick="location.href='/speech/speechGetText.do'">
+							<div style="width:100%; cursor:pointer; border:1px solid #cccccc; background-color:rgba(255,255,255,0); position:absolute; height:50px; bottom:150px;" onclick="location.href='/speech/annyang.do'">
 							&nbsp;
 							</div>
 							<!-- 공연장 클릭  -->
